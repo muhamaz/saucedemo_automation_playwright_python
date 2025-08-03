@@ -39,15 +39,22 @@ def attach_playwright_screenshot(page, step_name="Screenshot", full_page=True):
 def save_and_attach_screenshot(page, step_name, base_folder):
     """
     Simpan screenshot Playwright ke folder lokal dan attach ke Allure.
+    Jika base_folder tidak diberikan, ambil dari env var ALLURE_SUBFOLDER.
     """
+    # Gunakan ALLURE_SUBFOLDER dari environment jika tidak diberikan manual
+    if base_folder is None:
+        base_folder = os.environ.get("ALLURE_SUBFOLDER", "screenshots/default")
+
     os.makedirs(base_folder, exist_ok=True)
-    timestamp = datetime.now().strftime("%Y%m%d")
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"{step_name.replace(' ', '_')}_{timestamp}.png"
     path = os.path.join(base_folder, filename)
 
+    # Simpan screenshot
     page.screenshot(path=path, full_page=True)
 
-    # Attach screenshot to Allure
+    # Attach ke Allure
     with open(path, "rb") as img:
         allure.attach(
             img.read(),

@@ -40,7 +40,7 @@ class TestLoginSauceDemo:
 
         login = LoginPage(page)
         login.input_username("wrong_username")
-        login.input_password("LOGIN_PASSWORD")
+        login.input_password(os.getenv("LOGIN_PASSWORD"))
         login.click_login_button()
 
         assert_text_in_page(page, "Epic sadface: Username and password do not match any user in this service", "Pesan error login salah password")
@@ -53,7 +53,7 @@ class TestLoginSauceDemo:
 
         login = LoginPage(page)
         login.input_username("")
-        login.input_password("LOGIN_PASSWORD")
+        login.input_password(os.getenv("LOGIN_PASSWORD"))
         login.click_login_button()
 
         assert_text_in_page(page, "Epic sadface: Username is required", "Pesan error login username kosong")
@@ -64,7 +64,7 @@ class TestLoginSauceDemo:
         attach_timestamp("Waktu Mulai Test Login Password Kosong")
 
         login = LoginPage(page)
-        login.input_username("LOGIN_USERNAME")
+        login.input_username(os.getenv("LOGIN_USERNAME"))
         login.input_password("")
         login.click_login_button()
 

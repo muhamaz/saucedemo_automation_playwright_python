@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import os
 import pytest
 from playwright.sync_api import sync_playwright
-import allure
 
 load_dotenv()
 
@@ -40,16 +39,29 @@ def create_dir_if_not_exists(path):
     if not os.path.exists(path):
         os.makedirs(path)
         print(f"[INFO] Created: {path}")
+        
+@pytest.hookimpl(tryfirst=True)
+def pytest_configure(config):
+    # Ambil path test yang dijalankan
+    test_paths = config.args  # contoh: ['tests/test_main_login_saucedemo.py']
+    
+    for path in test_paths:
+        filename = os.path.basename(path)                 # test_main_login_saucedemo.py
+        test_name = os.path.splitext(filename)[0]         # test_main_login_saucedemo
+
+        allure_result_path = os.path.join("allure-results", test_name)
+
+        delete_dir(allure_result_path)                    # Hapus folder spesifik
+        create_dir_if_not_exists(allure_result_path)      # Buat ulang untuk hasil allure
+
+        # Simpan sebagai env var (opsional, jika ingin digunakan di helper)
+        os.environ["ALLURE_SUBFOLDER"] = allure_result_path
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_sessionstart(session):
-    # Hapus folder .pytest_cache
+    # Bersihkan .pytest_cache dan __pycache__
     delete_dir(".pytest_cache")
-    delete_dir("allure-results")
-    
-    # Buat ulang folder allure-results agar Allure tidak error
-    create_dir_if_not_exists("allure-results")
-    
+
     # Hapus semua folder __pycache__ dalam proyek
     for root, dirs, _ in os.walk("."):
         for d in dirs:
