@@ -211,6 +211,5 @@ __marimo__/
 /allure-results/
 .pytest_cache/
 __pycache__/
-venv/
 /virtualenv/
 
