@@ -65,7 +65,6 @@ def assert_text_in_page(page, text, message="Text not found in page"):
         raise AssertionError(f'{message}\nExpected text: "{text}"')
     _attach_assert_success(f'Text "{text}" ditemukan di halaman')
 
-
 def _attach_assert_success(message: str):
     allure.attach(
         message,

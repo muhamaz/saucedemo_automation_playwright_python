@@ -39,10 +39,18 @@ def wait_and_click(locator, timeout=5000):
         locator.click()
 
 def wait_and_fill(locator, text, timeout=5000):
-    """Tunggu sampai elemen terlihat dan enabled lalu isi teks"""
+    """
+    Tunggu sampai elemen terlihat dan enabled lalu hapus dan isi teks
+    """
     with log_step(f"Isi field setelah tunggu: {locator} dengan teks: {text}"):
         wait_until_visible(locator, timeout)
         wait_until_enabled(locator, timeout)
+        # Klik dan hapus isi field terlebih dahulu
+        locator.click()
+        locator.press("Control+A")
+        locator.press("Delete")
+
+        # Isi dengan teks baru
         locator.fill(text)
 
 def wait_and_upload_file(locator, file_path, timeout=5000):
