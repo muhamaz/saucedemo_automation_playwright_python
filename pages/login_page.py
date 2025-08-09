@@ -2,10 +2,11 @@ from locators.login_locator import LoginLocator
 from utils.allure_helpers import *
 from utils.wait_helpers import *
 
-class LoginPage:
+global_step_counter = 1
+
+class LoginPage:  
     def __init__(self, page):
         self.page = page
-        self.step_counter = 1
 
     def input_username(self, username):
         with log_step(f"Mengisi username: {username}"):
@@ -24,5 +25,9 @@ class LoginPage:
 
     # Menyimpan Screenshot
     def _capture(self, step_name, base_folder=None):
-        save_and_attach_screenshot(self.page, step_name, base_folder)
-        self.step_counter += 1
+        global global_step_counter
+        # Tambahkan step counter ke nama step
+        step_name_with_counter = f"{global_step_counter:02d}_{step_name}"  # pakai 2 digit, misalnya 01_Klik_Tombol
+
+        save_and_attach_screenshot(self.page, step_name_with_counter, base_folder)
+        global_step_counter += 1

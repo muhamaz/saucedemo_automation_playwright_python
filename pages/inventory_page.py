@@ -2,10 +2,11 @@ from locators.inventory_locator import InventoryLocator
 from utils.allure_helpers import *
 from utils.wait_helpers import *
 
+global_step_counter = 4
+
 class InventoryPage:
     def __init__(self, page):
         self.page = page
-        self.step_counter = 1
     
     def click_addtocart_button(self):
         with log_step("Klik tombol add to cart"):
@@ -37,5 +38,9 @@ class InventoryPage:
 
     # Menyimpan Screenshot
     def _capture(self, step_name, base_folder=None):
-        save_and_attach_screenshot(self.page, step_name, base_folder)
-        self.step_counter += 1
+        global global_step_counter
+        # Tambahkan step counter ke nama step
+        step_name_with_counter = f"{global_step_counter:02d}_{step_name}"  # pakai 2 digit, misalnya 01_Klik_Tombol
+        
+        save_and_attach_screenshot(self.page, step_name_with_counter, base_folder)
+        global_step_counter += 1

@@ -1,4 +1,5 @@
 import os
+from time import sleep
 import allure
 import pytest
 from pages.login_page import LoginPage
@@ -37,8 +38,7 @@ class TestLoginSauceDemo:
         login.click_login_button()
 
         assert_text_in_page(page, "Epic sadface: Username and password do not match any user in this service", "Pesan error login salah password")
-        
-        
+
     @allure.title("Login Username Kosong - SauceDemo")
     @allure.description("Melakukan login dengan username kosong dan password valid")
     def test_login_empty_username(self, page):
@@ -50,7 +50,7 @@ class TestLoginSauceDemo:
         login.click_login_button()
 
         assert_text_in_page(page, "Epic sadface: Username is required", "Pesan error login username kosong")
-        
+
     @allure.title("Login Password Kosong - SauceDemo")
     @allure.description("Melakukan login dengan username valid dan password kosong ")
     def test_login_empty_password(self, page):
