@@ -11,12 +11,12 @@ class LoginPage:
     def input_username(self, username):
         with log_step(f"Mengisi username: {username}"):
             wait_and_fill(self.page.locator(LoginLocator.username_field), username)
-            self._capture(f"Isi Username {username}")
+            self._capture(f"Isi Username {username if username else 'Kosong'}")
 
     def input_password(self, password):
         with log_step("Mengisi password: ********"):
             wait_and_fill(self.page.locator(LoginLocator.password_field), password)
-            self._capture(f"Isi Password {password}")
+            self._capture(f"Isi Password {password if password else 'Kosong'}")
 
     def click_login_button(self):
         with log_step("Klik tombol login"):

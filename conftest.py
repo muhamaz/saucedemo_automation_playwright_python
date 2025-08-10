@@ -15,8 +15,8 @@ load_dotenv()
 def browser():
     with sync_playwright() as p:
         browser = p.chromium.launch(
-            headless=False,
-            args=["--start-maximized"]
+            headless=False
+            # args=["--start-maximized"] # Uncomment if you want to start maximized
         )
         yield browser
         browser.close()
@@ -26,9 +26,9 @@ def page(browser):
     width = int(os.getenv("VIEWPORT_WIDTH", 1920))
     height = int(os.getenv("VIEWPORT_HEIGHT", 1080))
     context = browser.new_context(
-        # viewport={"width": width, "height": height},
-        # device_scale_factor=1,
-        no_viewport=True  # Disable viewport to use full window size
+        viewport={"width": width, "height": height},
+        device_scale_factor=1
+        # no_viewport=True  # Disable viewport to use full window size
     )
     page = context.new_page()
     page.goto(os.getenv("MAIN_URL"))

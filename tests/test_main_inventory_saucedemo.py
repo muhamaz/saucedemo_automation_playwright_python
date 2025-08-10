@@ -1,7 +1,5 @@
-import os
 import allure
 from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
 from utils.assertion_helpers import *
 from utils.wait_helpers import *
 from utils.allure_helpers import *

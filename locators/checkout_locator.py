@@ -1,0 +1,13 @@
+class CheckoutLocator:
+    first_name_input = "input[name='firstName']"
+    last_name_input = "input[name='lastName']"
+    zip_code_input = "input[name='postalCode']"
+    continue_button = "input[type='submit']"
+    cancel_button = "//button[@id='cancel']"
+    checkout_your_information_text = "//span[text()='Checkout: Your Information']"
+    checkout_overview_text = "//span[text()='Checkout: Overview']"
+    finish_button = "//button[@id='finish']"
+    checkout_finish_text = "//span[@class='title' and text()='Checkout: Complete!']"
+    back_to_products_button = "//button[@id='back-to-products']"
+    total_price_text = "//div[@class='summary_total_label']"
+    tax_text = "//div[@class='summary_tax_label']"
