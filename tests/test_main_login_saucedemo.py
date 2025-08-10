@@ -8,8 +8,8 @@ from utils.allure_helpers import *
 
 
 @pytest.mark.login
-# @pytest.mark.suite_smoke ("Test ringan untuk cek fungsi utama")
-@pytest.mark.suite_regression ("Full regression suite")
+# @pytest.mark.suite_smoke
+@pytest.mark.suite_regression
 @allure.epic("Autentikasi")
 @allure.feature("Login")
 @allure.suite("Test Login SauceDemo")

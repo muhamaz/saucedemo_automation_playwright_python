@@ -7,7 +7,7 @@ from utils.allure_helpers import *
 import pytest
 
 
-@pytest.mark.login
+@pytest.mark.cart
 # @pytest.mark.suite_smoke ("Test ringan untuk cek fungsi utama")
 @pytest.mark.suite_regression ("Full regression suite")
 @allure.epic("Cart Functionality")

@@ -9,9 +9,9 @@ from utils.allure_helpers import *
 import pytest
 
 
-@pytest.mark.login
+@pytest.mark.checkout
 # @pytest.mark.suite_smoke ("Test ringan untuk cek fungsi utama")
-@pytest.mark.suite_regression ("Full regression suite")
+@pytest.mark.suite_regression
 @allure.epic("Checkout Functionality")
 @allure.feature("Checkout")
 @allure.suite("Test Checkout SauceDemo")
