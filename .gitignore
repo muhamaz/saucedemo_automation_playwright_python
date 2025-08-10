@@ -212,7 +212,5 @@ __marimo__/
 .pytest_cache/
 __pycache__/
 /virtualenv/
-pytest.ini
-run_tests.sh
 /allure-report/
 requirements.txt
