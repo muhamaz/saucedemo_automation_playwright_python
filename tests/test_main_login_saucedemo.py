@@ -1,5 +1,4 @@
 import os
-from time import sleep
 import allure
 import pytest
 from pages.login_page import LoginPage
