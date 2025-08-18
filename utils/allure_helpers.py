@@ -25,7 +25,7 @@ def log_info(message: str, name: str = "Info"):
     )
 
     
-def attach_playwright_screenshot(page, step_name="Screenshot", full_page=True):
+def attach_playwright_screenshot(page, step_name, full_page=True):
     """
     Ambil screenshot dari page dan langsung attach ke Allure (tanpa simpan lokal).
     """

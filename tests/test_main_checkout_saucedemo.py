@@ -14,7 +14,6 @@ import pytest
 @pytest.mark.suite_regression
 @allure.epic("Checkout Functionality")
 @allure.feature("Checkout")
-@allure.suite("Test Checkout SauceDemo")
 @allure.story("Melakukan Checkout dan Mengisi Informasi Pengiriman")
 class TestCheckoutSauceDemo:
     @allure.title("Mengisi Informasi Pengiriman - SauceDemo")

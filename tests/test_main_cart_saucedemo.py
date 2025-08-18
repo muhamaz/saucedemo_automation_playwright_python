@@ -9,10 +9,9 @@ import pytest
 
 @pytest.mark.cart
 # @pytest.mark.suite_smoke ("Test ringan untuk cek fungsi utama")
-@pytest.mark.suite_regression ("Full regression suite")
+@pytest.mark.suite_regression
 @allure.epic("Cart Functionality")
 @allure.feature("Cart")
-@allure.suite("Test Cart SauceDemo")
 @allure.story("Menambahkan dan Menghapus Item dari Keranjang serta Melakukan Checkout")
 class TestCartSauceDemo:
     @allure.title("Menambahkan Item ke Keranjang - SauceDemo")

@@ -11,7 +11,6 @@ import pytest
 @pytest.mark.suite_regression
 @allure.epic("Inventory Functionality")
 @allure.feature("Inventory")
-@allure.suite("Test Inventory SauceDemo")
 @allure.story("Menambahkan dan Menghapus Item dari Keranjang serta Melakukan Filter")
 class TestInventorySauceDemo:
     @allure.title("Menambahkan Item ke Keranjang - SauceDemo")

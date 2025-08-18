@@ -11,7 +11,6 @@ from utils.allure_helpers import *
 @pytest.mark.suite_regression
 @allure.epic("Autentikasi")
 @allure.feature("Login")
-@allure.suite("Test Login SauceDemo")
 @allure.story("Login dengan kredensial valid dan tidak valid")
 class TestLoginSauceDemo:
     @allure.title("Login Salah Password - SauceDemo")

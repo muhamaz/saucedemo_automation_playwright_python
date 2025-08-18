@@ -1,18 +1,26 @@
 import os
 import shutil
+import allure
 import pytest
 from dotenv import load_dotenv
-from pages.login_page import LoginPage
-from utils.wait_helpers import *
 from playwright.sync_api import sync_playwright
 
-# Muat variabel dari .env
+from pages.login_page import LoginPage
+from utils.wait_helpers import *
+
+# =====================================================
+#  Load Environment Variables
+# =====================================================
 load_dotenv()
 
-# ---------------- FIXTURES ---------------- #
+
+# =====================================================
+#  Fixtures
+# =====================================================
 
 @pytest.fixture(scope="session")
 def browser():
+    """Fixture untuk inisialisasi browser sekali per session."""
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=False
@@ -23,8 +31,10 @@ def browser():
 
 @pytest.fixture(scope="class")
 def page(browser):
+    """Fixture untuk setup page dan otomatis logout saat teardown."""
     width = int(os.getenv("VIEWPORT_WIDTH", 1920))
     height = int(os.getenv("VIEWPORT_HEIGHT", 1080))
+    
     context = browser.new_context(
         viewport={"width": width, "height": height},
         device_scale_factor=1
@@ -35,7 +45,7 @@ def page(browser):
 
     yield page
 
-    # --- Teardown: logout sebelum close browser ---
+    # Teardown: logout sebelum close browser
     try:
         burger_btn = page.locator("//div[@class='bm-burger-button']")
         logout_btn = page.locator("//a[@id='logout_sidebar_link']")
@@ -51,38 +61,46 @@ def page(browser):
 
     context.close()
 
+
 @pytest.fixture(scope="class")
 def login_and_go_to_nextpage(page):
+    """Fixture untuk login ke aplikasi sebelum menjalankan test."""
     login = LoginPage(page)
     login.input_username(os.getenv("LOGIN_USERNAME"))
     login.input_password(os.getenv("LOGIN_PASSWORD"))
     login.click_login_button()
     yield page
 
-# --------------- HELPER FUNCTIONS --------------- #
+# =====================================================
+#  Helper Functions
+# =====================================================
 
 def delete_dir(path):
+    """Hapus folder jika ada."""
     if os.path.exists(path):
         shutil.rmtree(path)
         print(f"[INFO] Deleted: {path}")
 
 def create_dir_if_not_exists(path):
+    """Buat folder jika belum ada."""
     if not os.path.exists(path):
         os.makedirs(path)
         print(f"[INFO] Created: {path}")
 
-# --------------- PYTEST HOOKS --------------- #
+# =====================================================
+#  Pytest Hooks
+# =====================================================
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-    # Deteksi nama test yang dijalankan
+    """Konfigurasi awal pytest: siapkan folder screenshot & allure-results per test file."""
     test_paths = config.args
     for path in test_paths:
         filename = os.path.basename(path)
         test_name = os.path.splitext(filename)[0]
 
         # Buat folder screenshot
-        screenshot_path = os.path.join("screenshots", test_name)
+        screenshot_path = os.getenv("SCREENSHOT_SUBFOLDER") or os.path.join("screenshots", test_name)
         delete_dir(screenshot_path)
         create_dir_if_not_exists(screenshot_path)
         os.environ["SCREENSHOT_SUBFOLDER"] = screenshot_path
@@ -102,8 +120,23 @@ def pytest_configure(config):
 # def pytest_addoption(parser):
 #     pass
 
+# Mapping untuk suite
+SUITE_MAPPING = {
+    "suite_regression": "Regression Tests",
+}
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_runtest_setup(item):
+    for marker, suite_name in SUITE_MAPPING.items():
+        if item.get_closest_marker(marker):
+            allure.dynamic.parent_suite("Saucedemo Automation")
+            allure.dynamic.suite(suite_name)
+            break
+
+
 @pytest.hookimpl(tryfirst=True)
 def pytest_sessionstart(session):
+    """Bersihkan cache & __pycache__ sebelum test dimulai."""
     delete_dir(".pytest_cache")
     for root, dirs, _ in os.walk("."):
         for d in dirs:
@@ -111,7 +144,9 @@ def pytest_sessionstart(session):
                 delete_dir(os.path.join(root, d))
 
 
-# # Screenshot saat test gagal
+# =====================================================
+#  (Optional) Screenshot on Failure
+# =====================================================
 # @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 # def pytest_runtest_makereport(item):
 #     os.makedirs("screenshots", exist_ok=True)  # buat folder kalau belum ada

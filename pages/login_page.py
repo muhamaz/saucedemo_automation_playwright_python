@@ -30,4 +30,5 @@ class LoginPage:
         step_name_with_counter = f"{global_step_counter:02d}_{step_name}"  # pakai 2 digit, misalnya 01_Klik_Tombol
 
         save_and_attach_screenshot(self.page, step_name_with_counter, base_folder)
+        # attach_playwright_screenshot(self.page, step_name_with_counter)
         global_step_counter += 1
