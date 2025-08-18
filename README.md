@@ -36,7 +36,7 @@
 **Framework for automation:**
 
 ![Playwright](https://img.shields.io/badge/-playwright-%232EAD33?style=for-the-badge&logo=playwright&logoColor=white)
-![Allure](https://img.shields.io/badge/-serenity-16a67a?style=for-the-badge&logo=serenity&logoColor=black)
+![Allure]()
 
 ## 🏎️ How to Run all Test Scenarios
 
