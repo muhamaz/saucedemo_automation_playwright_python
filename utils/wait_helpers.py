@@ -1,5 +1,5 @@
 from playwright.sync_api import expect
-from utils.allure_helpers import log_step
+from utils.allure_helpers import *
 
 def wait_until_visible(locator, timeout=5000):
     """Tunggu hingga elemen terlihat"""

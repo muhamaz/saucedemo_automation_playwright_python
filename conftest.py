@@ -23,8 +23,11 @@ def browser():
     """Fixture untuk inisialisasi browser sekali per session."""
     with sync_playwright() as p:
         browser = p.chromium.launch(
-            headless=False
-            # args=["--start-maximized"] # Uncomment if you want to start maximized
+            headless=os.getenv("HEADLESS", "true").lower() == "true",
+            args=["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--start-maximized", "--incognito"],
+            # Uncomment the line below to run in incognito mode
+            
+            # args=["--start-maximized"]  # Uncomment if you want to start maximized (headed mode)
         )
         yield browser
         browser.close()
@@ -38,7 +41,7 @@ def page(browser):
     context = browser.new_context(
         viewport={"width": width, "height": height},
         device_scale_factor=1
-        # no_viewport=True  # Disable viewport to use full window size
+        # no_viewport=True  # Uncomment to disable viewport and use full window size
     )
     page = context.new_page()
     page.goto(os.getenv("MAIN_URL"))
