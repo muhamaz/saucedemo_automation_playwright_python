@@ -18,46 +18,49 @@
 ## 📝 Reports
 
 #### Summary Report
-![report-Web-summary](https://github.com/muhamaz/SauceDemo-Serenity-BDD/blob/master/img/sumReport.png)
+![report-Web-summary](https://github.com/muhamaz/saucedemo_automation_playwright_python/blob/main/report_screenshots/Screenshot_9.png)
 
 #### Coverage Report
-![report-Web-cpverage](https://github.com/muhamaz/SauceDemo-Serenity-BDD/blob/master/img/coverage.png)
+![report-Web-coverage](https://github.com/muhamaz/saucedemo_automation_playwright_python/blob/main/report_screenshots/Screenshot_10.png)
 
 #### Automation Testing When Run in Intellij IDE
-![report-api-runningtest](https://github.com/muhamaz/SauceDemo-Serenity-BDD/blob/master/img/running.png)
+![report-api-runningtest](https://github.com/muhamaz/saucedemo_automation_playwright_python/blob/main/report_screenshots/Screenshot_8.png)
 
 ## 🛠 Tools
 
 **Automation:**  
-![IntellijIDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
-![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
-![Chrome](https://img.shields.io/badge/chrome-C71A36?style=for-the-badge&logo=chrome&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
 
 **Framework for automation:**
 
-![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white)
-![Serenity](https://img.shields.io/badge/-serenity-16a67a?style=for-the-badge&logo=serenity&logoColor=black)
-![Cucumber](https://img.shields.io/badge/-cucumber-4bc47b?style=for-the-badge&logo=cucumber&logoColor=black)
+![Playwright](https://img.shields.io/badge/-playwright-%232EAD33?style=for-the-badge&logo=playwright&logoColor=white)
+![Allure](https://img.shields.io/badge/-serenity-16a67a?style=for-the-badge&logo=serenity&logoColor=black)
 
 ## 🏎️ How to Run all Test Scenarios
 
 1. Clone the repository
 ```bash
-  $ git clone https://github.com/muhamaz/SauceDemo-Serenity-BDD.git
+  $ git clone https://github.com/muhamaz/saucedemo_automation_playwright_python.git
 ```
 2. Open  this Project Repository on Intellij IDE and Run this on the IDE terminal
 
 ```bash
-  $ mvn clean verify
+  $ ./run_test_suite.sh [suite_name]
+```
+Example :
+```bash
+  $ ./run_test_suite.sh regression
 ```
 
 
 ## 📱 Created By
 
- [![LinkedIn](https://img.shields.io/badge/-MHumam%20Zaky-white?style=for-the-badge&logo=linkedin&logoColor=blue)](https://www.linkedin.com/in/muhammad-humam-zaky-139369170/)
-  [![GitHub](https://img.shields.io/badge/-MhumamZaky-white?style=for-the-badge&logo=github&logoColor=black)](https://github.com/muhamaz)
+[![LinkedIn](https://img.shields.io/badge/-MHumam%20Zaky-white?style=for-the-badge&logo=linkedin&logoColor=blue)](https://www.linkedin.com/in/muhammad-humam-zaky-139369170/)
+[![GitHub](https://img.shields.io/badge/-MhumamZaky-white?style=for-the-badge&logo=github&logoColor=black)](https://github.com/muhamaz)
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/zaakzak_)
 
 <h5>
-<p align="center">:copyright: 2023 | This Repository Built with :heart:</p>
+<p align="center">:copyright: 2025 | This Repository Built with :heart:</p>
 </h5>
