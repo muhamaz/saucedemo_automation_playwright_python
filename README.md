@@ -44,8 +44,20 @@
 ```bash
   $ git clone https://github.com/muhamaz/saucedemo_automation_playwright_python.git
 ```
-2. Open  this Project Repository on Intellij IDE and Run this on the IDE terminal
 
+2. Open  this Project Repository on Visual Studio Code and Run this on the IDE terminal
+
+Use a Virtual Environment
+```bash
+  $ python -m venv [virtual_env_name]
+  $ source [virtual_env_name]/bin/activate    # Linux / Mac
+  $ [virtual_env_name]\Scripts\activate       # Windows
+```
+Install Python Libraries from the requirements.txt file
+```bash
+  $ pip install -r requirements.txt
+```
+Running the test
 ```bash
   $ ./run_test_suite.sh [suite_name]
 ```
