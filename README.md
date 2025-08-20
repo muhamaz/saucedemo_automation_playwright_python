@@ -23,7 +23,7 @@
 #### Coverage Report
 ![report-Web-coverage](https://github.com/muhamaz/saucedemo_automation_playwright_python/blob/main/report_screenshots/Screenshot_10.png)
 
-#### Automation Testing When Run in Intellij IDE
+#### Automation Testing When Run in Visual Studio Code
 ![report-api-runningtest](https://github.com/muhamaz/saucedemo_automation_playwright_python/blob/main/report_screenshots/Screenshot_8.png)
 
 ## 🛠 Tools
@@ -59,11 +59,11 @@ Install Python Libraries from the requirements.txt file
 ```
 Running the test
 ```bash
-  $ ./run_test_suite.sh [suite_name]
+  $ ./run_tests.sh [suite_name]
 ```
 Example :
 ```bash
-  $ ./run_test_suite.sh regression
+  $ ./run_tests.sh regression
 ```
 
 
